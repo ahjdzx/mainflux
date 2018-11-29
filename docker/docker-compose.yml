@@ -33,6 +33,8 @@ services:
     image: nats:1.3.0
     container_name: mainflux-nats
     restart: on-failure
+    ports:
+      - 8222:8222
     networks:
       - mainflux-base-net
 
@@ -40,6 +42,8 @@ services:
     image: postgres:10.2-alpine
     container_name: mainflux-users-db
     restart: on-failure
+    ports:
+      - 5432:5432
     environment:
       POSTGRES_USER: mainflux
       POSTGRES_PASSWORD: mainflux
@@ -74,6 +78,8 @@ services:
     image: postgres:10.2-alpine
     container_name: mainflux-things-db
     restart: on-failure
+    ports:
+      - 5433:5432
     environment:
       POSTGRES_USER: mainflux
       POSTGRES_PASSWORD: mainflux
